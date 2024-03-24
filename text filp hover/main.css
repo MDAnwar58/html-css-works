@@ -1,0 +1,76 @@
+/* Variables */
+:root {
+  --backgroundColor: #E7BDD6;
+  --cardFrontBackgroundColor: #FFFFFF;
+  --cardFrontForegroundColor: #FC545E;
+  --cardBackBackgroundColor: var(--cardFrontForegroundColor);
+  --cardBackForegroundColor: var(--cardFrontBackgroundColor);
+  --cardBorderColor: #FC545E;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+  display: inline-block;
+  perspective: 1000px;
+}
+
+/* Card Structure */
+.card-wrapper .card {
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.6s;
+  transition-timing-function: ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.card-wrapper .card .front,
+.card-wrapper .card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+}
+
+.card-wrapper .card .front {
+  z-index: 2;
+}
+
+/* Flip Left */
+.card-wrapper.flip-left .card .back {
+  transform: rotateY(-180deg);
+}
+
+.card-wrapper.flip-left:hover .card {
+  transform: rotateY(-180deg);
+}
+
+/* Demo Styles */
+body {
+  background: var(--backgroundColor);
+}
+
+.card-wrapper .card,
+.card-wrapper .card .front,
+.card-wrapper .card .back {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+.card-wrapper .card .front {
+  color: var(--cardFrontForegroundColor);
+  background: var(--cardFrontBackgroundColor);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.card-wrapper .card .back {
+  font-size: 1.5rem;
+  color: var(--cardBackForegroundColor);
+  background: var(--cardBackBackgroundColor);
+  border: 1px solid var(--cardBorderColor);
+  border-radius: 4px;
+}

@@ -1,0 +1,31 @@
+/* @IMPORT FONTS */
+		@import url(https://fonts.googleapis.com/css?family=Abel);
+		@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+		/* BASE */
+		/*body {
+			font-family: sans-serif;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}*/
+
+		#app {
+			margin: 0 auto;
+		}
+
+		.m-flip {
+			overflow: hidden;
+			cursor: pointer;
+		}
+
+		.m-flip_item {
+			display: block;
+			position: relative;
+			top: 0;
+			transition: top .2s ease-out 0s;
+		}
+
+		.m-flip_item:nth-child(1) {
+			color: #666;
+		}
