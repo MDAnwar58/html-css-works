@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		/* @IMPORT FONTS */
+		@import url(https://fonts.googleapis.com/css?family=Abel);
+		@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+		#app {
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.m-flip {
+			overflow: hidden;
+			cursor: pointer;
+		}
+
+		.m-flip_item {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			top: 0;
+			transition: top 0.2s ease-out 0s;
+		}
+
+		.m-flip_item:nth-child(1) {
+			color: #666;
+		}
+
+	</style>
+</head>
+<body>
+	<!-- white a paragraph in p tag -->
+	<div id="app">
+		<p class="m-flip js-flip fs-4 fw-bold text-dark ">
+			<span class="m-flip_item">Saad <span class=" rounded-circle text-white px-2 mx-1 bg-danger ">&</span>
+		Alifiyan</span>
+		<span class="m-flip_item text-muted ">Our Photos</span>
+	</p>
+</div>
+
+<script>
+		// Define flip function
+		function flip(options) {
+    // Default options
+    var settings = {
+    	targetClass: ".m-flip_item",
+    };
+    // Merge default options with user-provided options
+    if (options) {
+    	for (var prop in options) {
+    		if (options.hasOwnProperty(prop)) {
+    			settings[prop] = options[prop];
+    		}
+    	}
+    }
+
+    // Get all elements with the specified class
+    var elements = document.querySelectorAll(".js-flip");
+
+    // Iterate over each element
+    elements.forEach(function (element) {
+    	var target = element.querySelectorAll(settings.targetClass);
+
+        // Initialize flip effect
+        function initFlip() {
+        	var targetFirstHeight = target[0].offsetHeight;
+        	element.style.height = targetFirstHeight + "px";
+        }
+
+        // Mouse enter event
+        element.addEventListener("mouseenter", function () {
+        	target.forEach(function (item) {
+        		item.style.top = -element.offsetHeight + "px";
+        	});
+        });
+
+        // Mouse leave event
+        element.addEventListener("mouseleave", function () {
+        	target.forEach(function (item) {
+        		item.style.top = "0px";
+        	});
+        });
+
+        // Initialize flip effect
+        initFlip();
+    });
+}
+
+// Call the flip function when the DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+	flip();
+});
+
+</script>
+</body>
+</html>
